@@ -34,7 +34,7 @@ $(TARGET_LIB): $(LIB_OBJS)
 	if [ "$(RANLIB)" ]; then $(RANLIB) $@; fi
 
 example: example.o galois.o berlekamp.o crcgen.o rs.o
-	gcc -o example example.o -L. -lecc
+	gcc -ggdb -o example example.o -L. -lecc
 
 clean:
 	rm -f *.o example libecc.a
