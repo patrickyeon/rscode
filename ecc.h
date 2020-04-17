@@ -98,3 +98,8 @@ void mult_polys(int dst[], int p1[], int p2[]);
 
 void copy_poly(int dst[], int src[]);
 void zero_poly(int poly[]);
+
+/* patrickyeon adding hacks */
+int check_message(unsigned char codeword[], int csize,
+                  int nerasures, int erasures[], int minerrors,
+                  unsigned char dst[]);

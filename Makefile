@@ -13,6 +13,7 @@ DIRNAME= rscode-$(VERSION)
 
 CC = gcc
 # OPTIMIZE_FLAGS = -O69
+OPTIMIZE_FLAGS = -O2 -flto -march=native
 DEBUG_FLAGS = -g
 CFLAGS = -Wall -Wstrict-prototypes  $(OPTIMIZE_FLAGS) $(DEBUG_FLAGS) -I..
 LDFLAGS = $(OPTIMIZE_FLAGS) $(DEBUG_FLAGS)
@@ -34,7 +35,7 @@ $(TARGET_LIB): $(LIB_OBJS)
 	if [ "$(RANLIB)" ]; then $(RANLIB) $@; fi
 
 example: example.o galois.o berlekamp.o crcgen.o rs.o
-	gcc -ggdb -o example example.o -L. -lecc
+	gcc $(OPTIMIZE_FLAGS) -o example example.o -L. -lecc
 
 clean:
 	rm -f *.o example libecc.a
